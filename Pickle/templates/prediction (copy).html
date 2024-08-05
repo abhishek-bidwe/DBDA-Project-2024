@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Prediction</title>
+</head>
+<body>
+    <h1>ML Prediction</h1>
+    <form method="post">
+        <label for="co2_rate">CO₂ Growth Rate (%):</label>
+        <input type="range" id="co2_rate" name="co2_rate" min="0" max="5" step="0.1" value="2" oninput="this.nextElementSibling.value = this.value">
+        <output>2</output><br><br>
+
+        <label for="ch4_rate">CH₄ Growth Rate (%):</label>
+        <input type="range" id="ch4_rate" name="ch4_rate" min="0" max="5" step="0.1" value="2" oninput="this.nextElementSibling.value = this.value">
+        <output>2</output><br><br>
+
+        <label for="no2_rate">NO₂ Growth Rate (%):</label>
+        <input type="range" id="no2_rate" name="no2_rate" min="0" max="5" step="0.1" value="2" oninput="this.nextElementSibling.value = this.value">
+        <output>2</output><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if result %}
+        <h2>Prediction Results</h2>
+        <p>Linear Regression: The global temperature is expected to breach the 2°C mark in the year {{ result.lin_breach_year }}</p>
+        <p>Random Forest: The global temperature is expected to breach the 2°C mark in the year {{ result.rf_breach_year }}</p>
+        <p>XGBoost: The global temperature is expected to breach the 2°C mark in the year {{ result.xgb_breach_year }}</p>
+        
+        <h3>Future Temperatures</h3>
+        <p><strong>Linear Regression Future Temperatures:</strong> {{ result.lin_future_temperatures }}</p>
+        <p><strong>Random Forest Future Temperatures:</strong> {{ result.rf_future_temperatures }}</p>
+        <p><strong>XGBoost Future Temperatures:</strong> {{ result.xgb_future_temperatures }}</p>
+    {% endif %}
+</body>
+</html>
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Page</title>
+</head>
+<body>
+    <h1>Prediction Page</h1>
+    <form method="post" action="/predict">
+        <label for="co2_rate">CO2 Growth Rate:</label>
+        <input type="range" id="co2_rate" name="co2_rate" min="0" max="0.1" step="0.01" value="0.02" oninput="this.nextElementSibling.value = this.value">
+        <output>0.02</output><br>
+
+        <label for="ch4_rate">CH4 Growth Rate:</label>
+        <input type="range" id="ch4_rate" name="ch4_rate" min="0" max="0.1" step="0.01" value="0.02" oninput="this.nextElementSibling.value = this.value">
+        <output>0.02</output><br>
+
+        <label for="no2_rate">NO2 Growth Rate:</label>
+        <input type="range" id="no2_rate" name="no2_rate" min="0" max="0.1" step="0.01" value="0.02" oninput="this.nextElementSibling.value = this.value">
+        <output>0.02</output><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.querySelector('form').onsubmit = async function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const response = await fetch(this.action, {
+                method: this.method,
+                body: formData
+            });
+            const result = await response.json();
+            document.getElementById('result').innerText = `Breach Year: ${result.breach_year}`;
+        };
+    </script>
+</body>
+</html>
+
