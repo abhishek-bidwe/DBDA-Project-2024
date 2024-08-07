@@ -1,5 +1,5 @@
 
-# Analysing and Visualizing the trends in Global Warming temperature rise based on greenhouse gases like CO2, N2O and CH4 and Predicting the 2 deg Celsius temperature rise.
+# Analysing and Visualizing the trends in Global Warming temperature rise based on greenhouse gases like CO2, N2O and CH4 and Predicting the 2°C  temperature rise.
 
 ## **Introduction**
 
